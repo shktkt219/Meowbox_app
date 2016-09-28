@@ -1,4 +1,4 @@
-#Miniblog
+#Meowbox
 
 This is a rails app for “Meowbox” - a website where people can sign up for a monthly subscription for toys and treats for their favorite feline.
 
