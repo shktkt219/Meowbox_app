@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @boxes = @user.boxes(params[:user_id])
+    @boxes = @user.boxes
   end
 
   def destroy

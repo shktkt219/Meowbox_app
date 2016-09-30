@@ -1,3 +1,4 @@
 class Box < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_boxes
+  has_many :users, through: :user_boxes
 end

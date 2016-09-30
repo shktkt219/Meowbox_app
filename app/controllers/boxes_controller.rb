@@ -4,5 +4,5 @@ class BoxesController < ApplicationController
     @box = Box.find(params[:id])
   end
 
-  
+
 end
