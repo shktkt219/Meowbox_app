@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:visitor, :subscriber, :admin]
+
+  has_many :boxes
+
+  validates :first_name, :last_name, presence: true
 end

@@ -1,7 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Box.create!(level: 10, description: "This is a casual box but your kitty will enjoy this." )
+Box.create!(level: 30, description: "This is a standard box and your kitty will be satisfied it.")
+Box.create!(level: 100, description: "This is a luxuary box and your kitty will be one of the most gorgeous kitties in the world!")

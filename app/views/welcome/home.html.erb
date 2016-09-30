@@ -23,5 +23,8 @@
   <li><a href="/boxes/3">$100/month Box</a></li>
 </ul>
 <br>
-<p><%= link_to "start a subscription now", new_user_registration_path %></p>
-<p><%= link_to "subscriber's log in", new_user_session_path %></p>
+
+<% if !user_signed_in? %>
+  <p><%= link_to "start a subscription now", new_user_registration_path %></p>
+  <p><%= link_to "subscriber's log in", new_user_session_path %></p>
+<% end %>
