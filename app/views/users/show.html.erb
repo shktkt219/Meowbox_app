@@ -1,15 +1,13 @@
-<h1>Welcome, <%= @user.first_name %></h1>
+<h1>Welcome, <%= current_user.first_name %></h1>
 
-<h3>Your Data</h3>
-
-<p>Subscription course: </p>
-
-<p>Your box list</p>
 <ul>
-  <li></li>
+  <% current_user.boxes.each do |box| %>
+    <strong><p>Subscription course : $<%= box.level %>/mo</p></strong>
+    <strong>Your box history</strong>
+    <ul>
+      <li><%= link_to box.title, user_box_path(box.user_id, box)%> | <%= box.month %> <%= box.year %></li>
+    </ul>
+  <% end %>
 </ul>
 
-<a href="#">cancel subscription</a>
-
-<br>
-<br>
+<%= link_to "cancel subscription", current_user, method: :delete, data: { confirm: "You sure?"} %>
