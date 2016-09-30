@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930025917) do
+ActiveRecord::Schema.define(version: 20160930144420) do
+
+  create_table "box_items", force: :cascade do |t|
+    t.integer  "box_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "box_items", ["box_id"], name: "index_box_items_on_box_id"
+  add_index "box_items", ["item_id"], name: "index_box_items_on_item_id"
 
   create_table "boxes", force: :cascade do |t|
     t.string   "title"
@@ -25,6 +35,13 @@ ActiveRecord::Schema.define(version: 20160930025917) do
   end
 
   add_index "boxes", ["user_id"], name: "index_boxes_on_user_id"
+
+  create_table "items", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "user_boxes", force: :cascade do |t|
     t.integer  "user_id"

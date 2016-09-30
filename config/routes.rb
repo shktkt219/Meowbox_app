@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'welcome#home'
-  resources :boxes, only: [:show]
+  resources :boxes, only: [:show, :new, :create, :index]
 
   resources :users do
-    resources :boxes, only: [:show, :index]
+    resources :boxes, only: [:show, :index, :new]
   end
+
+  resources :items
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
