@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   root 'welcome#home'
   resources :boxes, only: [:show, :new, :create, :index]
 
-  resources :users only: [:show, :destroy] do
+  resources :users, only: [:show, :destroy] do
     resources :subscriptions, only: [:show] do
       resources :boxes, only: [:show, :index, :new]
-    end    
+    end
   end
 
   resources :subscriptions, only: [:index, :show]

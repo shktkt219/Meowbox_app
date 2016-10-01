@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001034604) do
+ActiveRecord::Schema.define(version: 20161001041106) do
 
   create_table "box_items", force: :cascade do |t|
     t.integer  "box_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20161001034604) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "role"
+    t.integer  "subscription_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

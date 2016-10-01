@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   # each Devise scope in app. the sanitizer know about Devise default params
   # and this cord can extend the permitted params.
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :subscription_id])
     end
 end
