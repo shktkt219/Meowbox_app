@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   enum role: [:visitor, :subscriber, :admin]
 
-  has_one :subscription
-  has_many :boxes, through: :subscription
+  belongs_to :subscription
 
   validates :first_name, :last_name, presence: true
 end

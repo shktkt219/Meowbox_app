@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001031401) do
+ActiveRecord::Schema.define(version: 20161001034604) do
 
   create_table "box_items", force: :cascade do |t|
     t.integer  "box_id"
@@ -25,16 +25,12 @@ ActiveRecord::Schema.define(version: 20161001031401) do
 
   create_table "boxes", force: :cascade do |t|
     t.string   "title"
-    t.integer  "level"
-    t.integer  "year"
     t.string   "month"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "description"
-    t.integer  "user_id"
+    t.integer  "year"
+    t.integer  "subscription_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
-
-  add_index "boxes", ["user_id"], name: "index_boxes_on_user_id"
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -50,16 +46,6 @@ ActiveRecord::Schema.define(version: 20161001031401) do
     t.datetime "updated_at",  null: false
     t.text     "description"
   end
-
-  create_table "user_boxes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "box_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "user_boxes", ["box_id"], name: "index_user_boxes_on_box_id"
-  add_index "user_boxes", ["user_id"], name: "index_user_boxes_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
