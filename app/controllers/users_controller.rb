@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @boxes = @user.boxes
+    @user.subscription_id = params[:id]
+    @subscription = Subscription.find(params[:id])
   end
 
   def destroy

@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'welcome#home'
-  resources :boxes, only: [:show, :new, :create, :index]
 
   resources :users, only: [:show, :destroy] do
     resources :subscriptions, only: [:show] do
-      resources :boxes, only: [:show, :index, :new]
+      resources :boxes, only: [:show, :index]
     end
   end
 
+  resources :boxes, only: [:show, :new, :create, :index]
   resources :subscriptions, only: [:index, :show]
   resources :items
   # The priority is based upon order of creation: first created -> highest priority.
