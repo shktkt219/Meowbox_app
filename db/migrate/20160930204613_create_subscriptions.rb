@@ -3,7 +3,6 @@ class CreateSubscriptions < ActiveRecord::Migration
     create_table :subscriptions do |t|
       t.string :name
       t.float :price
-      t.string :interval
 
       t.timestamps null: false
     end
