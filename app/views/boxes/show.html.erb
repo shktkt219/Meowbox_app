@@ -1,18 +1,9 @@
-<% if user_signed_in? %>
-  <h1><%= @box.title %></h1>
-  <h3><%= @box.month %>. <%= @box.year %></h3>
+<h1><%= @box.title %></h1>
+<h3><%= @box.month %>. <%= @box.year %></h3>
 
-  <strong>Item List</strong><br>
-  <ul>
-    <% @items.each do |item| %>
-     <li><%= item.title %> | <%= item.description %></li>
-    <% end %>
-  </ul>
-
-
-<% else %>
-  <h1>$<%= @box.level %>/month Box</h1>
-  <p><%= @box.description %></p>
-
-
-<% end %>
+<strong>Item List</strong><br>
+<ul>
+  <% @items.each do |item| %>
+   <li><%= item.title %> | <%= item.description %></li>
+  <% end %>
+</ul>

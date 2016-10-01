@@ -6,5 +6,6 @@ class SubscriptionsController < ApplicationController
 
   def show
     @subscription = Subscription.find(params[:id])
+    @boxes = @subscription.boxes
   end
 end

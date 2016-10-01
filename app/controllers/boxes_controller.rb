@@ -1,8 +1,9 @@
 class BoxesController < ApplicationController
-  before_action :user_signed_in?, only: [:index, :new, :create]
+  before_action :user_signed_in?, only: [:index, :new, :create, :show]
 
   def index
-    @boxes = Box.all
+    @subscription = Subscription.find(params[:subscription_id])
+    @boxes = @subscription.boxes
   end
 
   def show
@@ -28,7 +29,7 @@ class BoxesController < ApplicationController
   private
 
     def box_params
-      params.require(:box).permit(:title, :level, :year, :month, :items_ids => [], :items_attributes => [:title])
+      params.require(:box).permit(:title, :level, :year, :month, :subscription_id, :items_ids => [], :items_attributes => [:title])
     end
 
 end
