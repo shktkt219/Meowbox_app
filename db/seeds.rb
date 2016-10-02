@@ -1,6 +1,10 @@
-User.create!(first_name: "Sam", last_name: "Sams", email: "sam@rails.com", password: "samsams", password_confirmation: "samsams", subscription_id: 1)
-User.create!(first_name: "John", last_name: "Johns", email: "john@rails.com", password: "johnjohn", password_confirmation: "johnjohn", subscription_id: 2)
-User.create!(first_name: "Tom", last_name: "Toms", email: "tom@rails.com", password: "tomtoms", password_confirmation: "tomtoms", subscription_id: 3)
+User.create!(first_name: "Sam", last_name: "Sams", email: "sam@rails.com", password: "samsams", password_confirmation: "samsams")
+User.create!(first_name: "John", last_name: "Johns", email: "john@rails.com", password: "johnjohn", password_confirmation: "johnjohn")
+User.create!(first_name: "Tom", last_name: "Toms", email: "tom@rails.com", password: "tomtoms", password_confirmation: "tomtoms")
+
+Registration.create!(subscription_id: 1, user_id: 1)
+Registration.create!(subscription_id: 2, user_id: 2)
+Registration.create!(subscription_id: 3, user_id: 3)
 
 
 Subscription.create!(name: "basic", price: 10, description: "Basic plan. Casual boxes but your kitty will enjoy them.")

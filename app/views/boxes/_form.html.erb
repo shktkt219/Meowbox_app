@@ -7,10 +7,7 @@
 
   <%= f.label "[Select items]"%><br>
   <%= f.collection_check_boxes :item_ids, Item.all, :id, :title %><br>
-  <%= f.fields_for :items, @box.items.build do |items_fields| %>
-    <%= items_fields.text_field :title, placeholder: "title" %><br>
-    <%= items_fields.text_area :description, placeholder: "description" %>
-  <% end %><br>
+  
   <%= f.submit %>
 
 <% end %>

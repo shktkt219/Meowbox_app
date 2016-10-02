@@ -31,11 +31,6 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label "Select a Plan"%><br>
-    <%= f.collection_select(:subscription_id, Subscription.all, :id, :name) %>
-  </div>
-
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
