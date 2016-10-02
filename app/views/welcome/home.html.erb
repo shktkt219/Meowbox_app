@@ -1,8 +1,18 @@
 <% if user_signed_in? %>
   <h1>Welcome, <%= current_user.first_name %></h1>
 
-  <h3>Check your plan and boxes!</h3>
-  <p><%= link_to "Profile", current_user %></p>
+  <% if current_user.registration %>
+    <h3>Check your plan and boxes!</h3>
+    <p><%= link_to "Profile", current_user %></p>
+  <% else %>
+    <h3>Start Subscription!</h3>
+    <ul>
+      <li><b><%= @sub_1.name.capitalize %></b>  $<%= @sub_1.price %>/mo. | <%= link_to "Buy Now", subscription_path(@sub_1)%></li>
+      <li><b><%= @sub_2.name.capitalize %></b> $<%= @sub_2.price %>/mo. | <%= link_to "Buy Now", subscription_path(@sub_2)%></li>
+      <li><b><%= @sub_3.name.capitalize %></b> $<%= @sub_3.price %>/mo. | <%= link_to "Buy Now", subscription_path(@sub_3)%></li>
+    </ul>
+  <% end %>
+
 
 <% else %>
   <h1>Welcome to Meowbox</h1>
@@ -11,14 +21,4 @@
 
   <h4>We have three monthly plans!<br>
   <%= link_to "Click more details", subscriptions_path %></h4>
-
-  <h4>Cat toys</h4>
-  <p>We select toys and accessories that are fun and stimulating. Excitement can come as a potent catnip bird, cat grass seeds about to sprout, a squeaky mouse, or a handmade bow tie. We search the globe for goodies that will shake up kitty’s daily routine.</p>
-
-  <h4>Cat treats</h4>
-  <p>All edible items are carefully sourced from Canada or the US. Tasty treats are often single-ingredient, natural, or handmade. We search for foods which are healthy, grain-free, or local. We want kitty to discover treats that are yummy and guilt-free.</p>
-
-  <h4>A box!</h4>
-  <p>Your cat may suggest that the box is the best part! In a few months, kitty will come to recognize and love this special box. Rumour has it that this behaviour is because the cardboard is sprayed with a magical kitty potion.</p>
-  <br>
 <% end %>
