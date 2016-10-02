@@ -7,18 +7,13 @@ class SubscriptionsController < ApplicationController
   def create
     @plan = Plan.find_by(id: params[:subscription][:plan_id])
     @user = User.find(params[:user_id])
-    if @user.subscription == nil
-      @subscription = Subscription.create(user_id: @user.id, plan_id: @plan.id)
-      if @subscription.save
-        flash[:notice] = "Successfully subscribed!"
-        redirect_to user_path(current_user)
-      else
-        flash[:alart] = "Try again"
-        render 'subscriptions/new'
-      end
+    if @user.subscription != nil
+      flash[:notice] = "You've already subscribed to #{current_user.plan.name} plan"
     else
-      flash[:alart] = "You've already subscribed to #{current_user.plan.name}".
-      redirect_to user_path(current_user)
+      @subscription = Subscription.create(user_id: @user.id, plan_id: @plan.id)
+      flash[:notice] = "Successfully subscribed!"
     end
+    redirect_to user_path(current_user)
   end
+
 end
