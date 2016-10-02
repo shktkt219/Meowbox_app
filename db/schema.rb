@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002021718) do
+ActiveRecord::Schema.define(version: 20161002042307) do
 
   create_table "box_items", force: :cascade do |t|
     t.integer  "box_id"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20161002021718) do
   create_table "boxes", force: :cascade do |t|
     t.string   "title"
     t.string   "month_year"
-    t.integer  "subscription_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -38,23 +38,23 @@ ActiveRecord::Schema.define(version: 20161002021718) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.integer  "subscription_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "registrations", ["subscription_id"], name: "index_registrations_on_subscription_id"
-  add_index "registrations", ["user_id"], name: "index_registrations_on_user_id"
-
-  create_table "subscriptions", force: :cascade do |t|
+  create_table "plans", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.text     "description"
   end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "subscriptions", ["plan_id"], name: "index_subscriptions_on_plan_id"
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
