@@ -1,4 +1,4 @@
-<%= form_for @box, url: subscription_boxes_path do |f| %>
+<%= form_for @box, url: plan_boxes_path do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
 
@@ -7,7 +7,7 @@
 
   <%= f.label "[Select items]"%><br>
   <%= f.collection_check_boxes :item_ids, Item.all, :id, :title %><br>
-  
+
   <%= f.submit %>
 
 <% end %>

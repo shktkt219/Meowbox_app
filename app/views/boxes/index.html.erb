@@ -1,7 +1,7 @@
-<h1><%= @subscription.name.capitalize %> Box List</h1>
+<h1><%= @plan.name.capitalize %> Box List</h1>
 
 <% @boxes.each do |box| %>
   <ul>
-    <li><%= link_to box.title, subscription_box_path(@subscription, box) %> | <%= box.month_year %></li>
+    <li><%= link_to box.title, plan_box_path(@plan, box) %> | <%= box.month_year %></li>
   </ul>
 <% end %>

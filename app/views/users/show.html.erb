@@ -1,12 +1,12 @@
 <h1><%= current_user.first_name.capitalize %>'s Profile Page</h1>
 
-<h3>Your plan is <%= current_user.subscription.name.capitalize %>, $<%= current_user.subscription.price %>/mo.</h3>
+<h3>Your plan is <%= current_user.plan.name.capitalize %>, $<%= current_user.plan.price %>/mo.</h3>
 
 <h4>View previous meowboxes which you've received</h4>
 <ul>
-  <% current_user.subscription.boxes.each do |box| %>
-    <li><%= link_to box.title, subscription_box_path(current_user.subscription, box)%> | <%= box.month_year %></li>
+  <% current_user.plan.boxes.each do |box| %>
+    <li><%= link_to box.title, plan_box_path(current_user.plan, box)%> | <%= box.month_year %></li>
   <% end %>
 </ul>
 <br>
-<%= link_to "cancel subscription", current_user, method: :delete, data: { confirm: "You sure?"} %>
+<%= link_to "cancel account", current_user, method: :delete, data: { confirm: "You sure?"} %>

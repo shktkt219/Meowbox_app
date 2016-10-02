@@ -7,9 +7,9 @@
   <% else %>
     <h3>Start Subscription!</h3>
     <ul>
-      <li><b><%= @sub_1.name.capitalize %></b>  $<%= @sub_1.price %>/mo. | <%= link_to "Buy Now", subscription_path(@sub_1)%></li>
-      <li><b><%= @sub_2.name.capitalize %></b> $<%= @sub_2.price %>/mo. | <%= link_to "Buy Now", subscription_path(@sub_2)%></li>
-      <li><b><%= @sub_3.name.capitalize %></b> $<%= @sub_3.price %>/mo. | <%= link_to "Buy Now", subscription_path(@sub_3)%></li>
+      <li><b><%= @plan_1.name.capitalize %></b>  $<%= @plan_1.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_1)%></li>
+      <li><b><%= @plan_2.name.capitalize %></b> $<%= @plan_2.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_2)%></li>
+      <li><b><%= @plan_3.name.capitalize %></b> $<%= @plan_3.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_3)%></li>
     </ul>
   <% end %>
 
@@ -20,5 +20,5 @@
   <p>A monthly cat subscription box filled with fun unique toys and goodies</p>
 
   <h4>We have three monthly plans!<br>
-  <%= link_to "Click more details", subscriptions_path %></h4>
+  <%= link_to "Click more details", plans_path %></h4>
 <% end %>
