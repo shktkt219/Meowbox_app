@@ -1,8 +1,9 @@
-class CreateSubscriptions < ActiveRecord::Migration
+class CreatePlans < ActiveRecord::Migration
   def change
-    create_table :subscriptions do |t|
+    create_table :plans do |t|
       t.string :name
       t.float :price
+      t.text :description
 
       t.timestamps null: false
     end

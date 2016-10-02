@@ -1,0 +1,11 @@
+<h1>Plans</h1>
+
+<h4>We have three plans!</h4>
+<p>Click plan's name for more details</p>
+
+<ul>
+  <% @plans.each do |plan| %>
+    <li><%= link_to plan.name.capitalize, plan %> | $<%= plan.price %>/mo.</li>
+  <% end %>
+</ul>
+<br>
