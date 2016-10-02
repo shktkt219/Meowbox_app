@@ -1,2 +1,13 @@
-<h1>Subscriptions#new</h1>
-<p>Find me in app/views/subscriptions/new.html.erb</p>
+<h1>Buy Subscription</h1>
+
+<% @plans.each do |plan| %>
+ <ul>
+   <li><%= plan.name.capitalize %> | $<%= plan.price %>/mo.</li>
+ </ul>
+<% end %>
+
+<%= form_for @subscription, url: user_subscriptions_path(current_user)  do |f| %>
+  <%= f.collection_select :plan_id, Plan.all, :id, :name %><br>
+
+  <%= f.submit "Buy Subscription" %>
+<% end %>

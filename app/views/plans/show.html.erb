@@ -6,6 +6,6 @@
 
 <h4><%= link_to "View previous meowboxes", plan_boxes_path(@plan) %></h4>
 
-<% if current_user && current_user.registration == nil %>
-  <h4><%= link_to "Buy now",  %></h4>
+<% if current_user && current_user.plan == nil %>
+  <h4><%= link_to "Buy now", new_user_subscription_path(current_user) %></h4>
 <% end %>

@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <h1>Welcome, <%= current_user.first_name %></h1>
 
-  <% if current_user.registration %>
+  <% if current_user.subscription %>
     <h3>Check your plan and boxes!</h3>
     <p><%= link_to "Profile", current_user %></p>
   <% else %>
