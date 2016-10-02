@@ -1,5 +1,6 @@
 <h1><%= current_user.first_name.capitalize %>'s Profile Page</h1>
 
+<% if current_user.subscription %>
 <h3>Your plan is <%= current_user.plan.name.capitalize %>, $<%= current_user.plan.price %>/mo.</h3>
 
 <h4>View previous meowboxes which you've received</h4>
@@ -8,5 +9,6 @@
     <li><%= link_to box.title, plan_box_path(current_user.plan, box)%> | <%= box.month_year %></li>
   <% end %>
 </ul>
+<% end %>
 <br>
 <%= link_to "cancel account", current_user, method: :delete, data: { confirm: "You sure?"} %>
