@@ -12,6 +12,7 @@ class BoxesController < ApplicationController
   end
 
   def new
+    @subscription = Subscription.find(params[:subscription_id])
     @box = Box.new
     @items = @box.items.build
   end
@@ -29,7 +30,7 @@ class BoxesController < ApplicationController
   private
 
     def box_params
-      params.require(:box).permit(:title, :level, :year, :month, :subscription_id, :items_ids => [], :items_attributes => [:title])
+      params.require(:box).permit(:title, :level, :month_year, :subscription_id, :items_ids => [], :items_attributes => [:title])
     end
 
 end

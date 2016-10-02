@@ -2,6 +2,6 @@
 
 <% @boxes.each do |box| %>
   <ul>
-    <li><%= link_to box.title, subscription_box_path(@subscription, box) %> | <%= box.month %>. <%= box.year %></li>
+    <li><%= link_to box.title, subscription_box_path(@subscription, box) %> | <%= box.month_year %></li>
   </ul>
 <% end %>
