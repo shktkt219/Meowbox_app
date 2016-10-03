@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <h1>Welcome, <%= current_user.first_name %></h1>
+  <h1>Welcome, <%= current_user.first_name.capitalize %></h1>
 
   <% if current_user.subscription %>
     <h3>Check your plan and boxes!</h3>
