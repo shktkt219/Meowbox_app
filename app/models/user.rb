@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_one :subscription
   has_one :plan, through: :subscription
+  has_many :boxes, through: :plan
 
   validates :first_name, :last_name, presence: true
 end
