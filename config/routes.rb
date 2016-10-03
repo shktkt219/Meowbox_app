@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users, only: [:show] do
-    resources :subscriptions, only: [:create, :new]
+    resources :subscriptions, only: [:create, :new, :destroy]
   end
 
   resources :plans, only: [:index, :show] do

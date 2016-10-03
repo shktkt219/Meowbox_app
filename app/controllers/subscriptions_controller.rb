@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  before_action :user_signed_in?
+
   def new
     @plans = Plan.all
     @subscription = Subscription.new
@@ -14,6 +16,15 @@ class SubscriptionsController < ApplicationController
       flash[:notice] = "Successfully subscribed!"
     end
     redirect_to user_path(current_user)
+  end
+
+  def destroy
+    @subscription = Subscription.find(params[:id])
+    @plan = @subscription.plan
+    @user = User.find(params[:user_id])
+    Subscription.where(user_id: @user.id, plan_id: @plan.id).destroy_all
+    flash[:notice] = "Successfully unsubscribed!"
+    redirect_to root_path
   end
 
 end
