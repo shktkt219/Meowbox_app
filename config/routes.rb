@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'subscriptions/new'
-
-  get 'subscriptions/create'
-
   devise_for :users
   root 'welcome#home'
 

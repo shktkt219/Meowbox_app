@@ -5,7 +5,7 @@
 
   <h4>View previous meowboxes which you've received</h4>
   <ul>
-    
+
   </ul>
   <%= link_to "cancel subscription", user_subscription_path(current_user, current_user.subscription), method: :delete, data: { confirm: "You sure?"} %>
 <% else %>
@@ -15,4 +15,3 @@
   <%= link_to "start a subscription now", new_user_subscription_path(current_user)%>
 <% end %>
 <br>
-<%= link_to "cancel account", current_user, method: :delete, data: { confirm: "You sure?"} %>
