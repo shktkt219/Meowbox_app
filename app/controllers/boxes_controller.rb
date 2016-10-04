@@ -34,8 +34,8 @@ class BoxesController < ApplicationController
 
   def update
     if @box.update_attributes(box_params)
-      flash[:success] = "Successfully updated."
-      redirect_to plan_boxes_path(@plan)
+      flash[:notice] = "Successfully updated."
+      redirect_to plan_box_path(@plan, @box)
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class BoxesController < ApplicationController
 
   def destroy
     @box.destroy
-    flash[:success] = "Successfully destroyed."
+    flash[:notice] = "Successfully destroyed."
     redirect_to boxes_path
   end
 

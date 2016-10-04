@@ -4,7 +4,7 @@
 <strong>Item List</strong><br>
 <ul>
   <% @box.items.each do |item| %>
-   <li><%= item.item_name %> | <%= item.size %></li>
+   <li><%= link_to item.item_name, item_path(item) %> | <%= item.size %></li>
   <% end %>
 </ul>
 
