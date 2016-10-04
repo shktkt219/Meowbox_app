@@ -30,7 +30,7 @@ class BoxesController < ApplicationController
   private
 
     def box_params
-      params.require(:box).permit(:title, :month_year, :plan_id, :items_ids => [], :items_attributes => [:title])
+      params.require(:box).permit(:title, :month_year, :plan_id, :items_ids => [], :items_attributes => [:item_name] && [:description] && [:size] && [:url] && [:image])
     end
 
 end

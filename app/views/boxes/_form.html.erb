@@ -1,13 +1,20 @@
-<%= form_for @box, url: plan_boxes_path do |f| %>
+<%= form_for [@plan, @box], url: plan_boxes_path do |f| %>
+
+  <% if params[:plan_id] == nil %>
+    <%= f.label "Select a Plan" %>
+    <%= f.collection_select(:plan_id, Plan.all, :id, :name)%><br>
+  <% end %>
+
   <%= f.label :title %>
   <%= f.text_field :title %><br>
 
-  <%= f.label "Month and Year" %><br>
-  <%= f.date_select :month_year,  { :discard_day => true } %><br><br>
+  <%= f.label "Month and year" %>
+  <%= f.date_select :month_year, {order: [:month, :year], start_year: Date.today.year - 10, end_year: Date.today.year + 10}, { required: true } %><br><br>
 
-  <%= f.label "[Select items]"%><br>
-  <%= f.collection_check_boxes :item_ids, Item.all, :id, :title %><br>
+  <%= f.label "Select items(Up to three items)"%><br>
+  <% 3.times.each do %>
+    <%= f.collection_select :item_ids, Item.all, :id, :item_name, {include_blank: true} %><br>
+  <% end %><br>
 
   <%= f.submit %>
-
 <% end %>
