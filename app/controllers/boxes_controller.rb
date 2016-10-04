@@ -35,11 +35,17 @@ class BoxesController < ApplicationController
 
   def update
     if @box.update_attributes(box_params)
-      flash[:success] = "Successfully created."
+      flash[:success] = "Successfully updated."
       redirect_to plan_boxes_path(@plan)
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @box.destroy
+    flash[:success] = "Successfully destroyed."
+    redirect_to boxes_path
   end
 
   private

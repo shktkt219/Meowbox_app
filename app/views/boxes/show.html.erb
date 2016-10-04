@@ -1,5 +1,5 @@
 <h1><%= @box.title %></h1>
-<h3><%= @box.month_year.strftime('%B %Y') %></h3>
+<h3><%= @box.plan.name.capitalize %> Plan | <%= @box.month_year.strftime('%B %Y') %></h3>
 
 <strong>Item List</strong><br>
 <ul>
@@ -7,3 +7,17 @@
    <li><%= item.item_name %> | <%= item.size %></li>
   <% end %>
 </ul>
+
+<% if @plan %>
+  <%= link_to 'Edit Box', edit_plan_box_path(@plan, @box) %><br>
+  <%= link_to 'Delete Box', plan_box_path(@plan, @box), method: :delete, data: { confirm: 'You sure?'} %>
+  <br><br>
+  <%= link_to 'New Box', new_plan_box_path(@plan) %><br>
+  <%= link_to 'Back', plan_boxes_path(@plan) %>
+<% else %>
+  <%= link_to 'Edit Box', edit_box_path(@box) %>
+  <%= link_to 'Delete Box', box_path(@box), method: :delete, data: { confirm: 'You sure?'} %>
+  <br>
+  <%= link_to 'New Box', new_box_path %>
+  <%= link_to 'Back', boxes_path %>
+<% end %>
