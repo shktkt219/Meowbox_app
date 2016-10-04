@@ -1,7 +1,17 @@
-<h1><%= @plan.name.capitalize %> Box List</h1>
-
-<% @boxes.each do |box| %>
-  <ul>
-    <li><%= link_to box.title, plan_box_path(@plan, box) %> | <%= box.month_year.strftime('%B %Y') %></li>
-  </ul>
+<% if @plan %>
+  <h1><%= @plan.name.capitalize %> Box List</h1>
+  <% @boxes.each do |box| %>
+    <ul>
+      <li><%= link_to box.title, plan_box_path(@plan, box) %> | <%= box.month_year.strftime('%B %Y') %></li>
+    </ul>
+  <% end %>
+<% else %>
+  <h1>Box List</h1>
+  <% @boxes.each do |box| %>
+    <ul>
+      <li><%= link_to box.title, box_path(box) %> | <%= box.month_year.strftime('%B %Y') %></li>
+    </ul>
+  <% end %>
 <% end %>
+
+<%= link_to 'New Box', new_box_path %>

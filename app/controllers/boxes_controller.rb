@@ -3,7 +3,11 @@ class BoxesController < ApplicationController
   before_action :find_plan
 
   def index
-    @boxes = @plan.boxes
+    if @plan
+      @boxes = @plan.boxes
+    else
+      @boxes = Box.all
+    end
   end
 
   def show

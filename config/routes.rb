@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
 
   resources :plans, only: [:index, :show] do
-    resources :boxes, only: [:show, :index, :new, :create] do
-      resources :items, only: [:index, :new, :create]
+    resources :boxes do
+      resources :items
     end
   end
 
