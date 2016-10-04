@@ -1,0 +1,20 @@
+<h1><%= @item.item_name %></h1>
+
+<div class="">
+  <strong>Description</strong><br>
+  <%= @item.description %>
+</div><br>
+
+<div class="">
+  <%= image_tag @item.image %>
+</div><br>
+
+<div class="">
+  <strong>Size : </strong><%= @item.size %>
+</div><br>
+
+<div class="">
+  <strong><a href="<%= @item.url %>">Buy online</a></strong>
+</div>
+
+<%= link_to 'Back', items_path %>
