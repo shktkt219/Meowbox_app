@@ -1,9 +1,9 @@
 <h1><%= @box.title %></h1>
-<h3><%= @box.month_year %></h3>
+<h3><%= @box.month_year.strftime('%B %Y') %></h3>
 
 <strong>Item List</strong><br>
 <ul>
-  <% @items.each do |item| %>
-   <li><%= item.title %> | <%= item.description %></li>
+  <% @box.items.each do |item| %>
+   <li><%= item.item_name %> | <%= item.size %></li>
   <% end %>
 </ul>

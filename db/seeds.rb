@@ -11,27 +11,55 @@ Plan.create!(name: "basic", price: 10, description: "Basic plan. Casual boxes bu
 Plan.create!(name: "standard", price: 30, description: "Standard plan. Standard boxes and your kitty will be satisfied them.")
 Plan.create!(name: "premium", price: 100, description: "Premium plan. Luxuary boxes and your kitty will be one of the most gorgeous kitties in the world!")
 
-Box.create!(title: "Cool Basic", month_year: "August 2016", plan_id: 1)
-Box.create!(title: "Fun Basic", month_year: "September 2016", plan_id: 1)
-Box.create!(title: "Autumn Basic", month_year: "October 2016", plan_id: 1)
 
-Box.create!(title: "Cool Standard", month_year: "August 2016", plan_id: 2)
-Box.create!(title: "Fun Standard", month_year: "September 2016", plan_id: 2)
-Box.create!(title: "Autumn Standard", month_year: "October 2016", plan_id: 2)
+Box.create!(title: "Cool Basic", month_year: Date.today, plan_id: 1)
+Box.create!(title: "Fun Basic", month_year: Date.today.months_ago(1), plan_id: 1)
+Box.create!(title: "Autumn Basic", month_year: Date.today.months_ago(2), plan_id: 1)
 
-Box.create!(title: "Cool Premium", month_year: "August 2016", plan_id: 3)
-Box.create!(title: "Fun Premium", month_year: "September 2016", plan_id: 3)
-Box.create!(title: "Autumn Premium", month_year: "October 2016", plan_id: 3)
+Box.create!(title: "Cool Standard", month_year: Date.today, plan_id: 2)
+Box.create!(title: "Fun Standard", month_year: Date.today.months_ago(1), plan_id: 2)
+Box.create!(title: "Autumn Standard", month_year: Date.today.months_ago(2), plan_id: 2)
 
+Box.create!(title: "Cool Premium", month_year: Date.today, plan_id: 3)
+Box.create!(title: "Fun Premium", month_year: Date.today.months_ago(1), plan_id: 3)
+Box.create!(title: "Autumn Premium", month_year: Date.today.months_ago(2), plan_id: 3)
 
-Item.create!(title: "Cat Snack", description: "Cat Snack by Dr. Becker's Bites", image: "http://cdn6.bigcommerce.com/s-0seuy/products/77/images/435/Cat_new__63047.1445007600.100.100.jpg?c=2", size: "1oz", url: "http://www.drbeckersbites.com/search.php?search_query=cat%20snacl")
+BoxItem.create!(box_id: 1, item_id: 1)
+BoxItem.create!(box_id: 1, item_id: 3)
+BoxItem.create!(box_id: 1, item_id: 5)
+BoxItem.create!(box_id: 2, item_id: 2)
+BoxItem.create!(box_id: 2, item_id: 4)
+BoxItem.create!(box_id: 2, item_id: 6)
+BoxItem.create!(box_id: 3, item_id: 7)
+BoxItem.create!(box_id: 3, item_id: 9)
+BoxItem.create!(box_id: 3, item_id: 11)
+BoxItem.create!(box_id: 4, item_id: 8)
+BoxItem.create!(box_id: 4, item_id: 9)
+BoxItem.create!(box_id: 4, item_id: 10)
+BoxItem.create!(box_id: 5, item_id: 13)
+BoxItem.create!(box_id: 5, item_id: 15)
+BoxItem.create!(box_id: 5, item_id: 17)
+BoxItem.create!(box_id: 6, item_id: 12)
+BoxItem.create!(box_id: 6, item_id: 14)
+BoxItem.create!(box_id: 6, item_id: 16)
+BoxItem.create!(box_id: 7, item_id: 1)
+BoxItem.create!(box_id: 7, item_id: 3)
+BoxItem.create!(box_id: 7, item_id: 5)
+BoxItem.create!(box_id: 8, item_id: 2)
+BoxItem.create!(box_id: 8, item_id: 4)
+BoxItem.create!(box_id: 8, item_id: 6)
+BoxItem.create!(box_id: 9, item_id: 30)
+BoxItem.create!(box_id: 9, item_id: 29)
+BoxItem.create!(box_id: 9, item_id: 27)
+
+Item.create!(item_name: "Cat Snack", description: "Cat Snack by Dr. Becker's Bites", image: "http://cdn6.bigcommerce.com/s-0seuy/products/77/images/435/Cat_new__63047.1445007600.100.100.jpg?c=2", size: "1oz", url: "http://www.drbeckersbites.com/search.php?search_query=cat%20snacl")
 30.times do
-  title = Faker::Commerce.product_name
+  item_name = Faker::Commerce.product_name
   description = Faker::Lorem.sentence
   image = Faker::Avatar.image("cat_snack_and_toy", "50x50", "jpg")
   size = Faker::Number.between(1, 10)
   url = Faker::Internet.url
-  Item.create!(title: title,
+  Item.create!(item_name: item_name,
                description: description,
                image: image,
                size: "#{size} oz",

@@ -1,8 +1,8 @@
 class BoxesController < ApplicationController
   before_action :user_signed_in?, only: [:index, :new, :create, :show]
+  before_action :find_plan
 
   def index
-    @plan = Plan.find(params[:plan_id])
     @boxes = @plan.boxes
   end
 
@@ -12,25 +12,32 @@ class BoxesController < ApplicationController
   end
 
   def new
-    @plan = Plan.find(params[:plan_id])
     @box = Box.new
     @items = @box.items.build
   end
 
   def create
-    @box = Box.new(box_params)
+    @box = @plan.boxes.new(box_params)
     if @box.save
       flash[:success] = "Box was successfully created."
-      redirect_to @box
+      redirect_to plan_boxes_path(@plan)
     else
-      render 'boxes/new'
+      render 'new'
     end
   end
 
   private
 
     def box_params
-      params.require(:box).permit(:title, :month_year, :plan_id, :items_ids => [], :items_attributes => [:item_name] && [:description] && [:size] && [:url] && [:image])
+      params.require(:box).permit(:title, :month_year, :plan_id, :item_ids => [], :items_attributes => [:item_name] && [:description] && [:size] && [:url] && [:image])
+    end
+
+    def find_plan
+      if params[:plan_id] != nil
+        @plan = Plan.find(params[:plan_id])
+      elsif params[:box] != nil && params[:box][:plan_id] != nil
+        @plan = Plan.find(params[:box][:plan_id])
+      end
     end
 
 end

@@ -1,4 +1,5 @@
-<%= form_for [@plan, @box], url: plan_boxes_path do |f| %>
+<%= form_for [@plan, @box] do |f| %>
+  <%= render "shared/error_messages", object: @box %>
 
   <% if params[:plan_id] == nil %>
     <%= f.label "Select a Plan" %>
@@ -9,11 +10,11 @@
   <%= f.text_field :title %><br>
 
   <%= f.label "Month and year" %>
-  <%= f.date_select :month_year, {order: [:month, :year], start_year: Date.today.year - 10, end_year: Date.today.year + 10}, { required: true } %><br><br>
+  <%= f.date_select :month_year, { discard_day: :true, } %><br><br>
 
   <%= f.label "Select items(Up to three items)"%><br>
   <% 3.times.each do %>
-    <%= f.collection_select :item_ids, Item.all, :id, :item_name, {include_blank: true} %><br>
+    <%= collection_select :box, :item_ids, Item.all, :id, :item_name, {include_blank: true} %><br>
   <% end %><br>
 
   <%= f.submit %>

@@ -2,6 +2,6 @@
 
 <% @boxes.each do |box| %>
   <ul>
-    <li><%= link_to box.title, plan_box_path(@plan, box) %> | <%= box.month_year %></li>
+    <li><%= link_to box.title, plan_box_path(@plan, box) %> | <%= box.month_year.strftime('%B %Y') %></li>
   </ul>
 <% end %>
