@@ -1,6 +1,7 @@
 class BoxesController < ApplicationController
   before_action :user_signed_in?, only: [:index, :new, :create, :show]
-  before_action :find_plan
+  before_action :set_plan
+  before_action :set_box, except: [:index, :new, :create]
 
   def index
     if @plan
@@ -17,16 +18,27 @@ class BoxesController < ApplicationController
 
   def new
     @box = Box.new
-    @items = @box.items.build
   end
 
   def create
     @box = @plan.boxes.new(box_params)
     if @box.save
-      flash[:success] = "Box was successfully created."
+      flash[:success] = "Successfully created."
       redirect_to plan_boxes_path(@plan)
     else
       render 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @box.update_attributes(box_params)
+      flash[:success] = "Successfully created."
+      redirect_to plan_boxes_path(@plan)
+    else
+      render 'edit'
     end
   end
 
@@ -36,12 +48,16 @@ class BoxesController < ApplicationController
       params.require(:box).permit(:title, :month_year, :plan_id, :item_ids => [], :items_attributes => [:item_name] && [:description] && [:size] && [:url] && [:image])
     end
 
-    def find_plan
-      if params[:plan_id] != nil
+    def set_plan
+      if params[:plan_id].present?
         @plan = Plan.find(params[:plan_id])
-      elsif params[:box] != nil && params[:box][:plan_id] != nil
+      elsif params[:box].present? && params[:box][:plan_id].present?
         @plan = Plan.find(params[:box][:plan_id])
       end
+    end
+
+    def set_box
+      @box = Box.find(params[:id])
     end
 
 end

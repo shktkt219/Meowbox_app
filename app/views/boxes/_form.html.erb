@@ -1,7 +1,7 @@
-<%= form_for [@plan, @box] do |f| %>
+<%= form_for([@plan, @box]) do |f| %>
   <%= render "shared/error_messages", object: @box %>
 
-  <% if params[:plan_id] == nil %>
+  <% unless params[:plan_id].present? %>
     <%= f.label "Select a Plan" %>
     <%= f.collection_select(:plan_id, Plan.all, :id, :name)%><br>
   <% end %>
