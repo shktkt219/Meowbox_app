@@ -1,5 +1,4 @@
 class BoxesController < ApplicationController
-  before_action :user_signed_in?
   before_action :set_plan
   before_action :set_box, except: [:index, :new, :create]
 
