@@ -1,5 +1,5 @@
 <%= form_for([@plan, @box]) do |f| %>
-  <%= render "shared/error", object: @box %>
+  <%= render "shared/errors", object: @box %>
 
   <% unless params[:plan_id].present? %>
     <%= f.label "Select a Plan" %>

@@ -21,7 +21,6 @@ class BoxesController < ApplicationController
 
   def create
     @box = @plan.boxes.new(box_params)
-    item_size_valid?
     if @box.save
       flash[:success] = "Successfully created."
       redirect_to plan_boxes_path(@plan)
@@ -34,7 +33,6 @@ class BoxesController < ApplicationController
   end
 
   def update
-    item_size_valid?
     if @box.update_attributes(box_params)
       flash[:notice] = "Successfully updated."
       redirect_to plan_box_path(@plan, @box)
@@ -56,9 +54,9 @@ class BoxesController < ApplicationController
     end
 
     def set_plan
-      if params[:plan_id].present?
+      if params[:plan_id]
         @plan = Plan.find(params[:plan_id])
-      elsif params[:box].present? && params[:box][:plan_id].present?
+      elsif params[:box] && params[:box][:plan_id]
         @plan = Plan.find(params[:box][:plan_id])
       end
     end
