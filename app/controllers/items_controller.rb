@@ -1,10 +1,14 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
-  before_action :set_box, except: [:index, :destroy]
-  before_action :set_plan, except: [:index, :show]
+  before_action :set_box, except: [:destroy]
+  before_action :set_plan, except: [:show]
 
   def index
-    @items = Item.all
+    if params[:box_id]
+     @items = @box.items
+    else
+      @items = Item.all
+    end
   end
 
   def new
@@ -22,12 +26,23 @@ class ItemsController < ApplicationController
   end
 
   def show
+    if params[:box_id]
+      @item = @box.items.find(params[:id])
+    else
+      @item = Item.find(params[:id])
+    end
   end
 
   def edit
   end
 
   def update
+    if @item.update_attributes(item_params)
+      flash[:notice] = 'Successfully updated'
+      redirect_to item_path(@item)
+    else
+      render 'edit'
+    end
   end
 
   def destroy

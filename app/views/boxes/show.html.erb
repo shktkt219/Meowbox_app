@@ -2,11 +2,19 @@
 <h3><%= @box.plan.name.capitalize %> Plan | <%= @box.month_year.strftime('%B %Y') %></h3>
 
 <strong>Item List</strong><br>
-<ul>
-  <% @box.items.each do |item| %>
-   <li><%= link_to item.item_name, item_path(item) %> | <%= item.size %></li>
-  <% end %>
-</ul>
+<% if @plan %>
+  <ul>
+    <% @box.items.each do |item| %>
+     <li><%= link_to item.item_name, plan_box_item_path(@plan, @box, item) %> | <%= item.size %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <ul>
+    <% @box.items.each do |item| %>
+     <li><%= link_to item.item_name, item_path(item) %> | <%= item.size %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <% if @plan %>
   <%= link_to 'Edit Box', edit_plan_box_path(@plan, @box) %><br>
