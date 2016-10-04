@@ -4,4 +4,5 @@ class Item < ActiveRecord::Base
 
   validates :item_name, :description, :size, presence: true
   validates_uniqueness_of :item_name
+
 end

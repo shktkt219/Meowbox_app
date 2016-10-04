@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     @item = @box.items.new(item_params)
     if @item.save
       flash[:notice] = 'Successfully created'
-      redirect_to items_path
+      redirect_to item_path(@item)
     else
       render 'new'
     end
