@@ -13,8 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :boxes
+  resources :boxes do
+    resources :items
+  end
+
   resources :items
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

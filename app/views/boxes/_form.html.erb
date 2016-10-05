@@ -12,8 +12,34 @@
   <%= f.label "Month and year" %>
   <%= f.date_select :month_year, { discard_day: :true, } %><br><br>
 
-  <strong><%= f.label "Select items(Up to three items)"%></strong><br>
-  <%= f.collection_check_boxes :item_ids, Item.all, :id, :item_name %><br><br>
-
+  <strong><%= f.label "Select items(up to three items)"%></strong><br>
+    <%= f.fields_for :items do |items_fields| %>
+    <ul>
+      <li>
+        <%= items_fields.label :item_name %>
+        <%= items_fields.text_field :item_name %><br>
+      </li>
+      <li>
+        <%= items_fields.label :description %>
+        <%= items_fields.text_area :description %><br>
+      </li>
+      <li>
+        <%= items_fields.label :image %>
+        <%= items_fields.text_field :image %><br>
+      </li>
+      <li>
+        <%= items_fields.label :size %>
+        <%= items_fields.text_field :size %><br>
+      </li>
+      <li>
+        <%= items_fields.label :url %>
+        <%= items_fields.text_field :url %>
+      </li>
+      <% if @box.persisted? %>
+        <%= items_fields.check_box :_destroy %>
+        <%= items_fields.label :_destroy %>
+      <% end %>
+    </ul><br>
+    <% end %>
   <%= f.submit %>
 <% end %>

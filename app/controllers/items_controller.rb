@@ -66,6 +66,9 @@ class ItemsController < ApplicationController
        @box = Box.find(params[:box_id])
      elsif params[:item] && params[:item][:box_id]
        @box = Box.find(params[:item][:box_id])
+     else
+       @item = Item.find(params[:id])
+       @box = @item.boxes
      end
    end
 
@@ -73,7 +76,7 @@ class ItemsController < ApplicationController
      if params[:plan_id]
        @plan = Plan.find(params[:plan_id])
      elsif @box
-       @box.plan
+       @plan = @box.plan
      end
    end
 

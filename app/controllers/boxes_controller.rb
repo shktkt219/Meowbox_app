@@ -2,6 +2,7 @@ class BoxesController < ApplicationController
   before_action :set_plan
   before_action :set_box, except: [:index, :new, :create]
 
+
   def index
     if @plan
       @boxes = @plan.boxes
@@ -16,6 +17,7 @@ class BoxesController < ApplicationController
 
   def new
     @box = Box.new
+    3.times {@box.items.build}
   end
 
   def create
@@ -32,7 +34,7 @@ class BoxesController < ApplicationController
   end
 
   def update
-    if @box.update_attributes(box_params)
+    if @box.update(box_params)
       flash[:notice] = "Successfully updated."
       redirect_to plan_box_path(@plan, @box)
     else
@@ -49,7 +51,7 @@ class BoxesController < ApplicationController
   private
 
     def box_params
-      params.require(:box).permit(:title, :month_year, :plan_id, :item_ids => [], :items_attributes => [:item_name] && [:description] && [:size] && [:url] && [:image])
+      params.require(:box).permit(:title, :month_year, :plan_id, :item_ids => [], :items_attributes => [:id, :item_name, :description, :size, :url, :image, :_destroy])
     end
 
     def set_plan

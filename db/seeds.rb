@@ -20,7 +20,7 @@ Box.create!(title: "Cool Standard", month_year: Date.today.months_ago(2), plan_i
 Box.create!(title: "Fun Standard", month_year: Date.today.months_ago(1), plan_id: 2)
 Box.create!(title: "Autumn Standard", month_year: Date.today, plan_id: 2)
 
-Box.create!(title: "Cool Premium", month_year: today.months_ago(2), plan_id: 3)
+Box.create!(title: "Cool Premium", month_year: Date.today.months_ago(2), plan_id: 3)
 Box.create!(title: "Fun Premium", month_year: Date.today.months_ago(1), plan_id: 3)
 Box.create!(title: "Autumn Premium", month_year: Date.today, plan_id: 3)
 
