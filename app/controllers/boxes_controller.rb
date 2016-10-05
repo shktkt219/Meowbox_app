@@ -11,7 +11,6 @@ class BoxesController < ApplicationController
   end
 
   def show
-    @box = Box.find(params[:id])
     @items = @box.items
   end
 

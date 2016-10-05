@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :set_box, except: [:destroy]
-  before_action :set_plan, except: [:show]
+  before_action :set_plan
 
   def index
     if params[:box_id]
@@ -39,13 +39,20 @@ class ItemsController < ApplicationController
   def update
     if @item.update_attributes(item_params)
       flash[:notice] = 'Successfully updated'
-      redirect_to item_path(@item)
+      if params[:box_id]
+        redirect_to plan_box_path(@plan, @box)
+      else
+        redirect_to item_path(@item)
+      end
     else
       render 'edit'
     end
   end
 
   def destroy
+    @item.destroy
+    flash[:notice] = "Successfully deleted"
+    redirect_to items_path
   end
 
   private
