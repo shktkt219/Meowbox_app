@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :subscription_id])
     end
+
+  private
+
+    def admin_only
+      unless current_user.admin?
+        flash[:alert] = "Access denied"
+        redirect_to root_url
+      end
+    end
 end
