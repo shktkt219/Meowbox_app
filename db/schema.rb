@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 20161006153541) do
     t.datetime "updated_at",                             null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "role"
     t.boolean  "admin",                  default: false
   end
 

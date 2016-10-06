@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'history' => 'users#history'
   end
 
-  resources :plans, only: [:index, :show] do
+  resources :plans do
     resources :boxes do
       resources :items
       put 'ship' => 'boxes#ship'

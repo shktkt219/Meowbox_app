@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
   # each Devise scope in app. the sanitizer know about Devise default params
   # and this cord can extend the permitted params.
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :admin])
   end
 
   private
 
   def admin_only
-    unless current_user && current_user.admin?
+    unless current_user && current_user.admin
       flash[:alert] = "Access denied."
       redirect_to root_path
     end

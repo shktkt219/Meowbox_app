@@ -22,7 +22,7 @@
   </ul>
 <% end %>
 
-<% if current_user && current_user.admin? %>
+<% if current_user && current_user.admin %>
   <% if @plan %>
     <% if !@box.shipped? %>
       <%= button_to 'Ship', plan_box_ship_path(@plan, @box), method: :put, data: { confirm: "You sure?" }%>
