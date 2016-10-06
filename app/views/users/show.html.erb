@@ -1,16 +1,16 @@
-<h1><%= current_user.first_name.capitalize %>'s Profile Page</h1>
+<h1><%= @user.first_name.capitalize %>'s Profile Page</h1>
 
-<% if current_user.subscription %>
-  <h3>Your plan is <%= current_user.plan.name.capitalize %>, $<%= current_user.plan.price %>/mo.</h3>
+<% if @user.subscription %>
+  <h3>Your plan is <%= @user.plan.name.capitalize %>, $<%= @user.plan.price %>/mo.</h3>
 
-  <h4><%= link_to "Your box history", user_history_path(current_user)%></h4>
+  <h4><%= link_to "Your box history", user_history_path(@user)%></h4>
 
-  <%= link_to "cancel subscription", user_subscription_path(current_user, current_user.subscription), method: :delete, data: { confirm: "You sure?"} %>
+  <%= link_to "cancel subscription", user_subscription_path(@user, @user.subscription), method: :delete, data: { confirm: "You sure?"} %>
 
 <% else %>
-  <p><strong>Name: </strong><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
-  <p><strong>Email: </strong><%= current_user.email %></p><br>
+  <p><strong>Name: </strong><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
+  <p><strong>Email: </strong><%= @user.email %></p><br>
 
-  <%= link_to "start a subscription now", new_user_subscription_path(current_user)%>
+  <%= link_to "start a subscription now", new_user_subscription_path(@user)%>
 <% end %>
 <br>

@@ -3,8 +3,18 @@ class Ability
 
   def initialize(user)
       user ||= User.new # guest user (not logged in)
+
+      can :read [Plan, Box, Item]
+
       if user.admin?
         can :manage, :all
+      end
+
+      if user.subscriber?
+        can :read, [Box, Item, Plan]
+        can :magage
+      end
+
       else
         can :read, :all
       end

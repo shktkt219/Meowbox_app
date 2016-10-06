@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :user_signed_in?
+  before_action :authenticate_user!
 
   def index
     @users = User.all
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def history
-    @shipped_boxes = current_user.plan.boxes.where(shipped: true) 
+    @shipped_boxes = current_user.plan.boxes.where(shipped: true)
   end
 
 end
