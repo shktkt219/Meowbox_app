@@ -1,6 +1,6 @@
 class BoxesController < ApplicationController
   before_action :set_plan
-  before_action :set_box, except: [:index, :new, :create]
+  before_action :set_box, except: [:index, :new, :create, :ship]
 
 
   def index
@@ -46,6 +46,13 @@ class BoxesController < ApplicationController
     @box.destroy
     flash[:notice] = "Successfully destroyed."
     redirect_to boxes_path
+  end
+
+  def ship
+    @box = Box.find(params[:box_id])
+    @box.update(shipped: true)
+    flash[:notice] = 'Successfully shipped'
+    redirect_to @box
   end
 
   private

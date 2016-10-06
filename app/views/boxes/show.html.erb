@@ -23,12 +23,20 @@
 <% end %>
 
 <% if @plan %>
+  <% if !@box.shipped? %>
+    <%= button_to 'Ship', plan_box_ship_path(@plan, @box), method: :put, data: { confirm: "You sure?" }%>
+  <% end %>
+  <br>
   <%= link_to 'Edit Box', edit_plan_box_path(@plan, @box) %><br>
   <%= link_to 'Delete Box', plan_box_path(@plan, @box), method: :delete, data: { confirm: 'You sure?'} %>
   <br><br>
   <%= link_to 'New Box', new_plan_box_path(@plan) %><br>
   <%= link_to 'Back', plan_boxes_path(@plan) %>
 <% else %>
+  <% if !@box.shipped? %>
+    <%= button_to 'Ship', box_ship_path(@box), method: :put, data: { confirm: "You sure?" }%>
+  <% end %>
+  <br>
   <%= link_to 'Edit Box', edit_box_path(@box) %>
   <%= link_to 'Delete Box', box_path(@box), method: :delete, data: { confirm: 'You sure?'} %>
   <br>

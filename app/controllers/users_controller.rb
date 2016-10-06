@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def history
-    @shipped_boxes = @plan.boxes.where(shipped: true) if @plan
+    @shipped_boxes = current_user.plan.boxes.where(shipped: true) 
   end
 
 end

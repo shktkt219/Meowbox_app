@@ -18,4 +18,7 @@ class Box < ActiveRecord::Base
   #   end
   # end
 
+  def shipped?
+    shipped == true
+  end
 end

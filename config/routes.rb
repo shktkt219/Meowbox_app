@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show] do
     resources :boxes do
       resources :items, only: [:show]
+      put 'ship' => 'boxes#ship'
     end
   end
 
   resources :boxes do
     resources :items
+    put 'ship' => 'boxes#ship'
   end
 
   resources :items
