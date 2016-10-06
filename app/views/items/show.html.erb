@@ -17,5 +17,7 @@
   <strong><a href="<%= @item.url %>">Buy online</a></strong>
 </div><br>
 
-<%= link_to 'Edit', edit_item_path(@item) %><br>
-<%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: "You sure?" } %>
+<% if current_user && current_user.admin? %>
+  <%= link_to 'Edit', edit_item_path(@item) %><br>
+  <%= link_to 'Destroy', item_path(@item), method: :delete, data: { confirm: "You sure?" } %>
+<% end %>

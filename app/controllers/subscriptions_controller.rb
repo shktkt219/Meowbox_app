@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :user_signed_in?
+  before_action :authenticate_user!
 
   def new
     @plans = Plan.all

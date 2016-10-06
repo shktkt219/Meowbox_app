@@ -1,9 +1,3 @@
 <h1>Edit Box</h1>
 
 <%= render 'form' %>
-
-<% if @plan != nil %>
-  <%= link_to 'Back', plan_boxes_path(@plan) %>
-<% else %>
-  <%= link_to 'Back', boxes_path %>
-<% end %>

@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :set_box, except: [:destroy]
   before_action :set_plan, except: [:index]
+  before_action :admin_only, except: [:index, :show]
 
   def index
     if params[:box_id]
