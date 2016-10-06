@@ -12,7 +12,15 @@ This is a rails app for “Meowbox” - a website where people can sign up for a
 
 ##Usage
 
-Type the below and launch the server localhost:3000
+At first type the below
+
+   ```
+   $ bundle
+   $ rake db:migrate
+   $ rake db:seed
+   ```
+
+Next, type the below and launch the server localhost:3000
 
    ```
    $ rails s
