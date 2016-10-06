@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'welcome#home'
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index] do
     resources :subscriptions, only: [:create, :new, :destroy]
+    get 'history' => 'users#history'
   end
 
   resources :plans, only: [:index, :show] do

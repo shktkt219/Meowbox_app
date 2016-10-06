@@ -34,7 +34,7 @@ class BoxesController < ApplicationController
   end
 
   def update
-    if @box.update(box_params)
+    if @box.update_attributes(box_params)
       flash[:notice] = "Successfully updated."
       redirect_to plan_box_path(@plan, @box)
     else

@@ -3,11 +3,10 @@
 <% if current_user.subscription %>
   <h3>Your plan is <%= current_user.plan.name.capitalize %>, $<%= current_user.plan.price %>/mo.</h3>
 
-  <h4>View previous meowboxes which you've received</h4>
-  <ul>
+  <h4><%= link_to "Your box history", user_history_path(current_user)%></h4>
 
-  </ul>
   <%= link_to "cancel subscription", user_subscription_path(current_user, current_user.subscription), method: :delete, data: { confirm: "You sure?"} %>
+
 <% else %>
   <p><strong>Name: </strong><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
   <p><strong>Email: </strong><%= current_user.email %></p><br>
