@@ -8,6 +8,12 @@
      <li><%= link_to item.item_name, plan_box_item_path(@plan, @box, item) %> | <%= item.size %></li>
     <% end %>
   </ul>
+<% elsif @box %>
+  <ul>
+    <% @box.items.each do |item| %>
+     <li><%= link_to item.item_name, box_item_path(@box, item) %> | <%= item.size %></li>
+    <% end %>
+  </ul>
 <% else %>
   <ul>
     <% @box.items.each do |item| %>

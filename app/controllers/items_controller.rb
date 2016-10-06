@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :set_box, except: [:destroy]
-  before_action :set_plan
+  before_action :set_plan, except: [:index]
 
   def index
     if params[:box_id]
@@ -12,11 +12,19 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    if params[:box_id]
+      @item = @box.items.new
+    else
+      @item = Item.new
+    end
   end
 
   def create
-    @item = @box.items.new(item_params)
+    if params[:box_id]
+      @item = @box.items.new(item_params)
+    else
+      @item = Item.new(item_params)
+    end
     if @item.save
       flash[:notice] = 'Successfully created'
       redirect_to item_path(@item)
@@ -40,7 +48,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(item_params)
       flash[:notice] = 'Successfully updated'
       if params[:box_id]
-        redirect_to plan_box_path(@plan, @box)
+        redirect_to box_items_path(@box)
       else
         redirect_to item_path(@item)
       end
@@ -66,17 +74,14 @@ class ItemsController < ApplicationController
        @box = Box.find(params[:box_id])
      elsif params[:item] && params[:item][:box_id]
        @box = Box.find(params[:item][:box_id])
-     else
-       @item = Item.find(params[:id])
-       @box = @item.boxes
      end
    end
 
    def set_plan
-     if params[:plan_id]
+     if params[:plan]
        @plan = Plan.find(params[:plan_id])
      elsif @box
-       @plan = @box.plan
+       @plan = @box
      end
    end
 
