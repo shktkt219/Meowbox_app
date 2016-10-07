@@ -18,7 +18,8 @@ class ItemsController < ApplicationController
 
   def create
     @box = Box.find(params[:item][:boxes][:box_id])
-    @item = @box.items.new(item_params)
+    @item = @box.items.create(item_params)
+    @item.box_items.build(box_id: @box.id)
     if @item.save
       flash[:notice] = 'Successfully created'
       redirect_to box_path(@box)

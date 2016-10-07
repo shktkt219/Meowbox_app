@@ -32,6 +32,12 @@ class BoxesController < ApplicationController
   end
 
   def edit
+    @box_count = @box.items.count
+    if @box_count == 2
+      @box.items.build
+    elsif @box_count == 1
+      2.times {@box.items.build}
+    end
   end
 
   def update

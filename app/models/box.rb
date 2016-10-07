@@ -9,7 +9,7 @@ class Box < ActiveRecord::Base
   accepts_nested_attributes_for :items, limit: 3,
                                 reject_if: proc { |attributes| attributes['item_name'].blank? }
 
-  default_scope { order(created_at: :desc) }
+  default_scope { order(month_year: :desc) }
 
   # automatically added by accepts_nested_attributes_for :items
   # def items_attributes=(item_attributes)
