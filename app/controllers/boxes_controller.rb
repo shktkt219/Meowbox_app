@@ -57,7 +57,7 @@ class BoxesController < ApplicationController
 
   def ship
     @box = Box.find(params[:box_id])
-    @box.update(shipped: true)
+    @box.update(shipped: true, shipped_date: Time.now)
     flash[:notice] = 'Successfully shipped'
     redirect_to @box
   end

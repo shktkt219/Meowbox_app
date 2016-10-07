@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   end
 
   def history
-    @shipped_boxes = current_user.plan.boxes.where(shipped: true)
+    @user = User.find(params[:user_id])
+    @history_boxes = @user.boxes.where("shipped_date > ?", @user.subscription.created_at)
   end
 
 end

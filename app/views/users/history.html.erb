@@ -1,11 +1,11 @@
 <h1>Your History</h1>
 
-<% if @shipped_boxes %>
-  <% @shipped_boxes.each do |box| %>
+<% if @history_boxes %>
+  <% @history_boxes.each do |box| %>
     <ul>
       <li><%= link_to box.title, box_path(box) %> | <%= box.month_year.strftime('%B %Y') %></li>
     </ul>
   <% end %>
 <% else %>
-  <strong>You have no history.</strong>
+ <p>You have no history.</p>
 <% end %>
