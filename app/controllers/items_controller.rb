@@ -17,18 +17,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-
+    @box = Box.find(params[:item][:boxes][:box_id])
+    @item = @box.items.new(item_params)
     if @item.save
       flash[:notice] = 'Successfully created'
-      redirect_to item_path(@item)
+      redirect_to box_path(@box)
     else
       render 'new'
     end
   end
 
   def show
-
   end
 
   def edit
