@@ -1,10 +1,5 @@
-<%= form_for [@item] do |f| %>
+<%= form_for [@box, @item] do |f| %>
   <%= render 'shared/errors', object: @item %>
-
-  <%= f.label "Select a Box" %><br>
-  <%= f.fields_for :boxes do |builder| %>
-    <%= builder.collection_select(:box_id, Box.all, :id, :title) %>
-  <% end %><br><br>
 
   <%= f.label :item_name %><br>
   <%= f.text_field :item_name %><br>

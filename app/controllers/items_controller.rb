@@ -22,7 +22,8 @@ class ItemsController < ApplicationController
     if @box.items.count >= 3
       flash[:error] = "The Box has already had three items"
       render 'new'
-    elsif @item = @box.items.new(item_params) && @item.save
+    elsif @item = @box.items.new(item_params)
+      @item.save
       @item.box_items.create(box_id: @box.id)
       flash[:notice] = 'Successfully created'
       redirect_to box_path(@box)

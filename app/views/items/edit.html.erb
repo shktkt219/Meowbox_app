@@ -1,3 +1,7 @@
 <h1>Edit Item</h1>
 
-<%= render 'form' %>
+<% if params[:box_id]%>
+  <%= render 'form_boxes' %>
+<% else %>
+  <%= render 'form' %>
+<% end %>
