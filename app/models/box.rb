@@ -6,6 +6,7 @@ class Box < ActiveRecord::Base
   validates :title, :month_year, :plan_id, presence: true
   validates :title, uniqueness: true
   validates :month_year, uniqueness: { scope: :plan }
+  validates :items, length: { maximum: 3, too_long: "Up to three items in a box."}
   accepts_nested_attributes_for :items, limit: 3,
                                 reject_if: proc { |attributes| attributes['item_name'].blank? }
 

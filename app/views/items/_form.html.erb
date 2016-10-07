@@ -1,4 +1,4 @@
-<%= form_for([@plan, @box, @item])  do |f| %>
+<%= form_for [@box, @item] do |f| %>
   <%= render 'shared/errors', object: @item %>
 
   <% unless params[:box_id] %>
