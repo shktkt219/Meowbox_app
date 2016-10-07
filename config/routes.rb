@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :plans do
     resources :boxes do
-      resources :items
+      resources :items, only: [:show]
       put 'ship' => 'boxes#ship'
     end
   end

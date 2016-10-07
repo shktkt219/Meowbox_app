@@ -14,19 +14,15 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.boxes.build
+    @item.box_items.build
   end
 
   def create
-   if !@box
-    @box = Box.find(params[:item][:boxes][:box_id])
+    @item = Item.new
     if @box.items.count >= 3
       flash[:error] = "The Box has already had three items"
       render 'new'
-    end
-   end
-    @item = @box.items.new(item_params)
-    if @item.save
+    elsif @item = @box.items.new(item_params) && @item.save
       @item.box_items.create(box_id: @box.id)
       flash[:notice] = 'Successfully created'
       redirect_to box_path(@box)
@@ -69,8 +65,8 @@ class ItemsController < ApplicationController
    def set_box
      if params[:box_id]
        @box = Box.find(params[:box_id])
-     elsif params[:item] && params[:item][:box_id]
-       @box = Box.find(params[:item][:box_id])
+     elsif params[:item] && params[:item][:boxes][:box_id]
+       @box = Box.find(params[:item][:boxes][:box_id])
      end
    end
 
