@@ -5,7 +5,8 @@ class Box < ActiveRecord::Base
 
   validates :title, :month_year, :plan_id, presence: true
   validates :title, uniqueness: true
-  accepts_nested_attributes_for :items, limit: 3, allow_destroy: true,
+  validates :month_year, uniqueness: { scope: :plan }
+  accepts_nested_attributes_for :items, limit: 3,
                                 reject_if: proc { |attributes| attributes['item_name'].blank? }
 
   default_scope { order(created_at: :desc) }

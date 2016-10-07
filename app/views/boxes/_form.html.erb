@@ -35,10 +35,6 @@
         <%= items_fields.label :url %>
         <%= items_fields.text_field :url %>
       </li>
-      <% if @box.persisted? %>
-        <%= items_fields.check_box :_destroy %>
-        <%= items_fields.label :_destroy %>
-      <% end %>
     </ul><br>
     <% end %>
   <%= f.submit %>

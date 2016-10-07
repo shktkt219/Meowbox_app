@@ -1,9 +1,9 @@
-<%= form_for [@box, @item], url: items_path(@box) do |f| %>
+<%= form_for([@plan, @box, @item])  do |f| %>
   <%= render 'shared/errors', object: @item %>
 
   <% unless params[:box_id] %>
     <%= f.label "Select a Box" %><br>
-    <%= f.collection_select(:box_ids, Box.all, :id, :title) %>
+    <%= f.collection_select :box_items[:box_id], Box.all, :id, :title %>
   <% end %><br><br>
 
   <%= f.label :item_name %><br>

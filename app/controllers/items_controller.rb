@@ -13,19 +13,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    if params[:box_id]
-      @item = @box.items.new
-    else
-      @item = Item.new
-    end
+    @item = Item.new
   end
 
   def create
-    if params[:box_id]
-      @item = @box.items.new(item_params)
-    else
-      @item = Item.new(item_params)
-    end
+    @item = Item.new(item_params)
+
     if @item.save
       flash[:notice] = 'Successfully created'
       redirect_to item_path(@item)
@@ -35,11 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    if params[:box_id]
-      @item = @box.items.find(params[:id])
-    else
-      @item = Item.find(params[:id])
-    end
+
   end
 
   def edit
@@ -82,7 +71,7 @@ class ItemsController < ApplicationController
      if params[:plan]
        @plan = Plan.find(params[:plan_id])
      elsif @box
-       @plan = @box
+       @plan = @box.plan
      end
    end
 
