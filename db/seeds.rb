@@ -12,15 +12,15 @@ Plan.create!(name: "standard", price: 30, description: "Standard plan. Standard 
 Plan.create!(name: "premium", price: 100, description: "Premium plan. Luxuary boxes and your kitty will be one of the most gorgeous kitties in the world!")
 
 
-Box.create!(title: "Cool Basic", month_year: '2016-08-01'.to_date, plan_id: 1, shipped: true)
+Box.create!(title: "Cool Basic", month_year: '2016-08-01'.to_date, plan_id: 1)
 Box.create!(title: "Fun Basic", month_year: '2016-09-01'.to_date, plan_id: 1)
 Box.create!(title: "Autumn Basic", month_year: '2016-10-01'.to_date, plan_id: 1)
 
-Box.create!(title: "Cool Standard", month_year: '2016-08-01'.to_date, plan_id: 2, shipped: true)
+Box.create!(title: "Cool Standard", month_year: '2016-08-01'.to_date, plan_id: 2)
 Box.create!(title: "Fun Standard", month_year: '2016-09-01'.to_date, plan_id: 2)
 Box.create!(title: "Autumn Standard", month_year: '2016-10-01'.to_date, plan_id: 2)
 
-Box.create!(title: "Cool Premium", month_year: '2016-08-01'.to_date, plan_id: 3, shipped: true)
+Box.create!(title: "Cool Premium", month_year: '2016-08-01'.to_date, plan_id: 3)
 Box.create!(title: "Fun Premium", month_year: '2016-09-01'.to_date, plan_id: 3)
 Box.create!(title: "Autumn Premium", month_year: '2016-10-01'.to_date, plan_id: 3)
 
