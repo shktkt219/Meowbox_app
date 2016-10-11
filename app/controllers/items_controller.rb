@@ -41,11 +41,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update_attributes(item_params)
       flash[:notice] = 'Successfully updated'
-      if params[:box_id]
-        redirect_to box_items_path(@box)
-      else
-        redirect_to item_path(@item)
-      end
+      redirect_to item_path(@item)
     else
       render 'edit'
     end

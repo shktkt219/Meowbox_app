@@ -37,7 +37,7 @@
       <%= button_to 'Ship', box_ship_path(@box), method: :put, data: { confirm: "You sure?" }%>
     <% end %>
     <br>
-    <%= link_to 'Edit Box', edit_box_path(@box) %>
+    <%= link_to 'Edit Box', edit_box_path(@box) %><br>
     <%= link_to 'Delete Box', box_path(@box), method: :delete, data: { confirm: 'You sure?'} %>
     <br>
     <%= link_to 'New Box', new_box_path %>
