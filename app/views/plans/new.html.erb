@@ -1,0 +1,16 @@
+<h1>Create Plan</h1>
+
+<%= form_for @plan do |f| %>
+  <%= render "shared/errors", object: @plan %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %><br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
+
+  <%= f.submit %>
+<% end %>
