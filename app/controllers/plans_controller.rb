@@ -6,10 +6,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @plan }
-    end
+    @boxes = @plan.boxes
   end
 
   def new

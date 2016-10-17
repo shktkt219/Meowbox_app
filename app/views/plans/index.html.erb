@@ -6,7 +6,7 @@
 <ul>
 <% @plans.each do |plan| %>
   <li>
-    <h4><%= link_to plan.name.capitalize, @plan %></h4>
+    <h4><%= link_to plan.name.capitalize, plan %></h4>
     <p>$<%= plan.price %>/mo.</p>
     <div id="plan-<%= plan.id %>"><%= truncate(plan.description) %></div>
     <button class="js-more" data-id="<%= plan.id %>">More Info</button>
