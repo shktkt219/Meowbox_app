@@ -6,7 +6,22 @@
 
 <h4><%= link_to "View previous meowboxes", plan_boxes_path(@plan), class: "load_boxes" %></h4>
 
+<div class="boxes">
+  <ul>
+  </ul>
+</div>
 
 <% if current_user && current_user.plan == nil %>
   <h4><%= link_to "Buy now", new_user_subscription_path(current_user) %></h4>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $("a.load_boxes").on("click", function(e){
+    $.get(this.href).success(function(response){
+      $("div.boxes").html(response)
+    })
+    e.preventDefault();
+  })
+})
+</script>

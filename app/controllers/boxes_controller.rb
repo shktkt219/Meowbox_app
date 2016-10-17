@@ -7,6 +7,7 @@ class BoxesController < ApplicationController
   def index
     if @plan
       @boxes = @plan.boxes
+      render 'boxes/index', :layout => false
     else
       @boxes = Box.all
     end
