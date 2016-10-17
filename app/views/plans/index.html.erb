@@ -4,8 +4,27 @@
 <p>Click plan's name for more details</p>
 
 <ul>
-  <% @plans.each do |plan| %>
-    <li><%= link_to plan.name.capitalize, plan %> | $<%= plan.price %>/mo.</li>
-  <% end %>
+<% @plans.each do |plan| %>
+  <li>
+    <h4><%= link_to plan.name.capitalize, @plan %></h4>
+    <p>$<%= plan.price %>/mo.</p>
+    <div id="plan-<%= plan.id %>"><%= truncate(plan.description) %></div>
+    <button class="js-more" data-id="<%= plan.id %>">More Info</button>
+  </li>
+<% end %>
 </ul>
+
 <br>
+
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $(".js-more").on("click", function(){
+    var id = $(this).data("id");
+    $.get("/plans/" + id + ".json", function(data){
+      var plan = data["plan"];
+      var descriptionText = "<p>" + plan["description"] + "</p>";
+      $("#plan-" + id).html(descriptionText);
+    });
+  });
+});
+</script>
