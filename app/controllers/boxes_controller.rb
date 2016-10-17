@@ -14,10 +14,6 @@ class BoxesController < ApplicationController
 
   def show
     @items = @box.items
-    respond_to do |f|
-      f.html { render :show }
-      f.json { render json: @box }
-    end
   end
 
   def new

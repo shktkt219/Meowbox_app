@@ -4,20 +4,9 @@
 
 <p class="planDescription"><%= @plan.description %></p>
 
-<a href="#" class="load_boxes">View previous meowboxes</a>
-
-<!-- <ul>
-  <% @plan.boxes.each do |box| %>
-    <li><%= link_to box.title, box %></li>
-  <% end %>
-</ul> -->
-<!-- <h4><%= link_to "View previous meowboxes", plan_boxes_path(@plan) %></h4> -->
+<h4><%= link_to "View previous meowboxes", plan_boxes_path(@plan), class: "load_boxes" %></h4>
 
 
 <% if current_user && current_user.plan == nil %>
   <h4><%= link_to "Buy now", new_user_subscription_path(current_user) %></h4>
 <% end %>
-
-<script type="text/javascript" charset="utf-8">
-
-</script>
