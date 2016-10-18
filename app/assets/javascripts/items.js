@@ -6,6 +6,10 @@ function Item(attributes){
   this.size = attributes.size;
 }
 
+Item.prototype.renderLI = function(){
+  
+}
+
 $(function(){
   $("form#new_item").on("submit", function(event){
     event.preventDefault();
