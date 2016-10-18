@@ -15,6 +15,10 @@ class BoxesController < ApplicationController
 
   def show
     @items = @box.items
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @box }
+    end
   end
 
   def new

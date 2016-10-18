@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
       @item.box_items.create(box_id: @box.id)
       flash[:notice] = 'Successfully created'
       respond_to do |f|
-        f.html {redirect_to items_path}
+        f.html {redirect_to @item}
         f.json {render json: @item}
       end
     else
@@ -36,6 +36,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @item }
+    end
   end
 
   def edit
