@@ -26,7 +26,10 @@ class ItemsController < ApplicationController
       @item.save
       @item.box_items.create(box_id: @box.id)
       flash[:notice] = 'Successfully created'
-      redirect_to box_path(@box)
+      respond_to do |f|
+        f.html {redirect_to items_path}
+        f.json {render json: @item}
+      end
     else
       render 'new'
     end
