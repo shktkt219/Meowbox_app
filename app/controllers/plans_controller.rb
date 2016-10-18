@@ -21,7 +21,7 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     if @plan.save
       flash[:notice] = "Successfully created"
-      redirect_to plans_path
+      render json: @post, status: 201
     else
       render 'new'
     end

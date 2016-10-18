@@ -14,3 +14,17 @@
 
   <%= f.submit %>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $('form').submit(function(e){
+      e.preventDefault();
+      var values = $(this).serialize();
+      var newPlan = $.post('/plans', values);
+      newPlan.done(function(data){
+        console.log(data);
+      });
+    })
+  })
+
+</script>
