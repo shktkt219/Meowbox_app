@@ -21,7 +21,7 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     if @plan.save
       flash[:notice] = "Successfully created"
-      render json: @post, status: 201
+      render json: @plan, status: 201
     else
       render 'new'
     end

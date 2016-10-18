@@ -15,16 +15,24 @@
   <%= f.submit %>
 <% end %>
 
-<script type="text/javascript" charset="utf-8">
-  $(function(){
-    $('form').submit(function(e){
-      e.preventDefault();
-      var values = $(this).serialize();
-      var newPlan = $.post('/plans', values);
-      newPlan.done(function(data){
-        console.log(data);
-      });
-    })
-  })
+<div id="planResult">
+  <h3 id="planName"></h3>
+  <p id="planPrice"></p>
+  <p id="planDescription"></p>
+</div>
 
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/plans', values);
+      posting.done(function(data){
+        var plan = data["plan"];
+        $("#planName").text(plan["name"]);
+        $("#planDescription").text(plan["description"]);
+        $("#planPrice").text("$" + plan["price"]);
+      });
+    });
+  });
 </script>
