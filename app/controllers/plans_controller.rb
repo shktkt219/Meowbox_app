@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  before_action :admin_only, except: [:index, :show]
 
   def index
     @plans = Plan.all
