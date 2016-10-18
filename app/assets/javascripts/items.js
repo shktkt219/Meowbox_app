@@ -1,3 +1,11 @@
+function Item(attributes){
+  this.item_name = attributes.item_name;
+  this.description = attributes.description;
+  this.image = attributes.image;
+  this.url = attributes.url;
+  this.size = attributes.size;
+}
+
 $(function(){
   $("form#new_item").on("submit", function(event){
     event.preventDefault();
@@ -13,8 +21,9 @@ $(function(){
     })
     .success(function(json){
       var item = new Item(json);
+      var itemLi = item.renderLI()
 
-      $("div.item").append(html);
+      $("div.item").append(itemLi);
     })
     .error(function(response){
       console.log("You broke it?", response)
