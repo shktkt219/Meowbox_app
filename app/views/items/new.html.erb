@@ -6,6 +6,22 @@
   <%= render 'form' %>
 <% end %>
 
-<div class="item">
+<div class="new_created_items">
 
 </div>
+
+<script id="item-template" type="text/x-handlebars-template">
+   <h3 class="item_name">{{item_name}}</h3>
+   <div class="description">
+     <strong>Description : </strong>{{description}}
+   </div>
+   <div class="image">
+     <img src={{image}} height="25" width="25">
+   </div>
+   <div class="size">
+     <strong>Size : </strong>{{size}}
+   </div>
+   <div class="url">
+     <strong><a href="{{url}}">Buy online</a></strong>
+   </div>
+</script>
