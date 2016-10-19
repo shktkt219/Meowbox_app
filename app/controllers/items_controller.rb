@@ -25,11 +25,7 @@ class ItemsController < ApplicationController
     elsif @item = @box.items.new(item_params)
       @item.save
       @item.box_items.create(box_id: @box.id)
-      flash[:notice] = 'Successfully created'
-      respond_to do |f|
-        f.html {redirect_to @item}
-        f.json {render json: @item}
-      end
+      render json: @item, status: 201
     else
       render 'new'
     end
