@@ -27,6 +27,9 @@
       event.preventDefault();
       var values = $(this).serialize();
       var posting = $.post('/plans', values);
+      posting.error(function() {
+        alert('error!')
+      });
       posting.done(function(data){
         var plan = data["plan"];
         $("#planName").text(plan["name"]);

@@ -11,7 +11,7 @@
 <% elsif @box %>
   <ul>
     <% @box.items.each do |item| %>
-     <li><%= link_to item.item_name, box_item_path(@box, item) %> | <%= item.size %></li>
+     <li><%= link_to item.item_name, box_item_path(@box, item), class: "item-tag"%> | <%= item.size %></li>
     <% end %>
   </ul>
 <% else %>
@@ -43,3 +43,22 @@
     <%= link_to 'New Box', new_box_path %>
   <% end %>
 <% end %>
+
+<div id="resultItem">
+  <h3 id="resultItemName"></h3>
+  <p id="resultItemDescription"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $('.item-tag').on("click", function(e){
+      e.preventDefault();
+      var tag = $(this)
+      $.get(tag.attr("href") + ".json", function(data){
+        var item = data["item"]
+        $("#resultItemName").text(item["item_name"]);
+        $("#resultItemDescription").text(item["description"]);
+      });
+    });
+  });
+</script>

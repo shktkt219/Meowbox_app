@@ -24,7 +24,7 @@ class PlansController < ApplicationController
       flash[:notice] = "Successfully created"
       render json: @plan, status: 201
     else
-      render 'new'
+      render json: @plan, status: 400
     end
   end
 

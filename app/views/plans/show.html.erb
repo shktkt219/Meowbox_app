@@ -21,7 +21,7 @@
 $(function(){
   $("a.load_boxes").on("click", function(e){
     var id = $(this).data("id");
-    debugger
+
     $.get("/plans/" + id + ".json", function(data){
       var plan = data["plan"];
       var $ul = $("div.boxes ul");
