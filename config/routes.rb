@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'cars/create'
+
+  get 'cars/index'
+
+  get 'cars/show'
+
   devise_for :users
   root 'welcome#home'
 
@@ -77,4 +83,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '/cars' => 'cars#index'
 end

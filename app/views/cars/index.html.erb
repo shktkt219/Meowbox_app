@@ -1,0 +1,23 @@
+<h1>Cars#index</h1>
+
+<div class="cars">
+  <ul>
+  </ul>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+  var url = '/cars.json'
+  var someFunction = function(data) {
+     var cars = data["cars"];
+     $.each(cars, function(index, car){
+
+       $('.cars ul').append("<li>" + car["name"] + "</li>");
+     });
+  }
+
+  $.get(url)
+  .done(function(data){
+    someFunction(data)
+  })
+</script>
