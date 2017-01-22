@@ -1,24 +1,26 @@
-<% if user_signed_in? %>
-  <h1>Welcome, <%= current_user.first_name.capitalize %></h1>
+<div class="jumbotron text-center">
+  <div class="container">
+    <% if user_signed_in? %>
+      <h1>Welcome, <%= current_user.first_name.capitalize %></h1>
 
-  <% if current_user.subscription %>
-    <h3>Check your plan and boxes!</h3>
-    <p><%= link_to "Profile", current_user %></p>
-  <% else %>
-    <h3>Start Subscription!</h3>
-    <ul>
-      <li><b><%= @plan_1.name.capitalize %></b>  $<%= @plan_1.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_1)%></li>
-      <li><b><%= @plan_2.name.capitalize %></b> $<%= @plan_2.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_2)%></li>
-      <li><b><%= @plan_3.name.capitalize %></b> $<%= @plan_3.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_3)%></li>
-    </ul>
-  <% end %>
+      <% if current_user.subscription %>
+        <h3>Check your plan and boxes!</h3><br>
+        <p><%= link_to "Your Profile Page", current_user %></p>
+      <% else %>
+        <h3>Start Subscription!</h3>
+        <ul>
+          <li><b><%= @plan_1.name.capitalize %></b>  $<%= @plan_1.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_1)%></li>
+          <li><b><%= @plan_2.name.capitalize %></b> $<%= @plan_2.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_2)%></li>
+          <li><b><%= @plan_3.name.capitalize %></b> $<%= @plan_3.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_3)%></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <h1>Welcome to Meowbox</h1>
+      <h3>Cat toys, Cat treats, A box!</h3>
+      <p>A monthly cat subscription box filled with fun unique toys and goodies</p>
 
-
-<% else %>
-  <h1>Welcome to Meowbox</h1>
-  <h3>Cat toys, Cat treats, A box!</h3>
-  <p>A monthly cat subscription box filled with fun unique toys and goodies</p>
-
-  <h4>We have three monthly plans!<br>
-  <%= link_to "Click more details", plans_path %></h4>
-<% end %>
+      <h4>We have some monthly plans!</h4>
+      <%= button_to('Click more details', plans_path, :class => 'btn btn-large btn-primary')  %>
+    <% end %>
+  </div>
+</div>
