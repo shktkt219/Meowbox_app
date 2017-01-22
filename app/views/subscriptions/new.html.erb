@@ -5,9 +5,9 @@
    <li><%= plan.name.capitalize %> | $<%= plan.price %>/mo.</li>
  </ul>
 <% end %>
-
+<br>
 <%= form_for @subscription, url: user_subscriptions_path(current_user)  do |f| %>
   <%= f.collection_select :plan_id, Plan.all, :id, :name %><br>
-
-  <%= f.submit "Buy Subscription" %>
+  <br>
+  <%= f.submit "Buy Subscription", :class => 'btn btn-sm btn-primary' %>
 <% end %>

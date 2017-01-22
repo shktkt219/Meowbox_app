@@ -7,11 +7,14 @@
         <h3>Check your plan and boxes!</h3><br>
         <p><%= link_to "Your Profile Page", current_user %></p>
       <% else %>
-        <h3>Start Subscription!</h3>
-        <ul>
-          <li><b><%= @plan_1.name.capitalize %></b>  $<%= @plan_1.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_1)%></li>
-          <li><b><%= @plan_2.name.capitalize %></b> $<%= @plan_2.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_2)%></li>
-          <li><b><%= @plan_3.name.capitalize %></b> $<%= @plan_3.price %>/mo. | <%= link_to "Buy Now", plan_path(@plan_3)%></li>
+        <h2>Start Subscription now!</h2>
+        <br>
+        <ul style="list-style:none;">
+          <li><b><%= @plan_1.name.capitalize %></b>  $<%= @plan_1.price %>/mo.  <%= link_to "Check More", plan_path(@plan_1), :class => 'btn btn-xs btn-primary'%></li>
+          <br>
+          <li><b><%= @plan_2.name.capitalize %></b> $<%= @plan_2.price %>/mo.  <%= link_to "Check More", plan_path(@plan_2), :class => 'btn btn-xs btn-primary'%></li>
+          <br>
+          <li><b><%= @plan_3.name.capitalize %></b> $<%= @plan_3.price %>/mo.  <%= link_to "Check More", plan_path(@plan_3), :class => 'btn btn-xs btn-primary'%></li>
         </ul>
       <% end %>
     <% else %>
