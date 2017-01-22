@@ -1,6 +1,6 @@
 <h1>Plans</h1>
 
-<h4>We have three plans!</h4>
+<h4>We have some plans!</h4>
 <p>Click plan's name for more details</p>
 
 <ul>
@@ -9,7 +9,7 @@
     <h4><%= link_to plan.name.capitalize, plan %></h4>
     <p>$<%= plan.price %>/mo.</p>
     <div id="plan-<%= plan.id %>"><%= truncate(plan.description) %></div>
-    <button class="js-more" data-id="<%= plan.id %>">More Info</button>
+    <button class="js-more" data-id="<%= plan.id %>">More Info</button><br>
   </li>
 <% end %>
 </ul>
